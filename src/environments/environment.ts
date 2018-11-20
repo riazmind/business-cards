@@ -9,12 +9,12 @@ export const environment = {
 export const firebaseConfig = { 
 
   // Use your configuration 
-  apiKey: "", 
-  authDomain: "", 
-  databaseURL: "", 
-  projectId: "", 
-  storageBucket: "", 
-  messagingSenderId: "" 
+  apiKey: "AIzaSyAVesUXRkpWGGulQLEaXE49bBjpS-6Eycw",
+  authDomain: "businesscards-a9c3b.firebaseapp.com",
+  databaseURL: "https://businesscards-a9c3b.firebaseio.com",
+  projectId: "businesscards-a9c3b",
+  storageBucket: "businesscards-a9c3b.appspot.com",
+  messagingSenderId: "191499950808"
 };
 
 export const textDetectionConfig = { 
