@@ -1,0 +1,65 @@
+
+<div>
+
+  <div *ngIf="dataSaved; then afterSave; else beforeSave">
+  </div>
+
+  <ng-template #afterSave>
+      <div class="alert alert-success alert-dismissible m-4">
+          <button type="button" class="close" data-dismiss="alert" 
+          (click)="removeView()">&times;</button>
+          <strong>Business Card has been uploaded and saved in Firebase.</strong> 
+      </div>
+  </ng-template>
+
+  <ng-template #beforeSave>
+    <form class="container p-1">
+        <div class="card p-4">
+          <h4 class="pb-4">Review and Sava Card</h4>
+          <div class="form-group">
+            <label for="firstname">First Name:</label>
+            <input name="firstname" id="firstname" [(ngModel)]="firstName1" size="25" #firstname> 
+          </div>
+                
+          <div class="form-group">          
+            <label for="lastname">Last Name:</label>
+            <input name="lastname" id="lastname" [(ngModel)]="lastName1" size="25" #lastname> 
+          </div>
+
+          <div class="form-group">          
+              <label for="email">Email:</label>
+              <input name="email" id="email" [(ngModel)]="email1" size="50" #email> 
+          </div>
+
+          <div class="form-group">          
+              <label for="phone">Phone:</label>
+              <input name="phone" id="phone" [(ngModel)]="phone1" size="25" #phone> 
+          </div>
+
+          <div class="form-group">  
+            <div>        
+              <label for="extratext">Extra Text:</label>
+            </div>
+            <div>
+              <textarea rows="3" cols="50" name="extratext" id="extratext" [(ngModel)]="extraText1" #extratext> 
+              </textarea>
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <button type="button" class="btn btn-outline-primary" 
+            (click)="addCard(firstname.value, lastname.value, email.value, phone.value, extratext.value)">
+            Save
+            </button>
+            <button type="button" class="btn btn-outline-success ml-4" (click)="cancel()">Cancel</button>
+          </div> 
+      
+          <div class="form-group">
+              <img [src]="imageUri">
+          </div>  
+
+        </div>
+      </form>
+    </ng-template>
+
+  </div>

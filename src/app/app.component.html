@@ -1,0 +1,30 @@
+<div class="card m-1 bg-light text-dark">
+  <!-- <h4 class="mx-auto">{{title}}</h4> -->
+
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item ml-4">
+          <a class="nav-link text-white" routerLink="/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item ml-4">
+            <a class="nav-link text-white" routerLink="/history">History</a>
+        </li>
+        <!-- TODO: Change button to login or hide it after logout -->
+        <li class="nav-item ml-4">
+            <button (click)="logout()" class="btn btn-primary"> Logout </button>
+        </li> 
+      </ul>
+    </div> 
+  </nav>
+
+</div>
+    
+
+<router-outlet></router-outlet>

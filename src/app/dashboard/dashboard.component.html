@@ -1,0 +1,103 @@
+<form class="m-2 p-1">
+  <div class="card p-2">
+    <h4 class="card card-title bg-warning text-center p-2 mx-auto">Search and Add Business Cards</h4>
+    
+    <div class="card p-2 m-2 bg-light text-dark">
+      <div class="form-group">
+        <label for="firstname" class="col-2 col-form-label">First Name</label>
+        <input class="col-10" placeholder="Enter First name" name="firstname" id="firstname" #firstname> 
+      </div>
+            
+      <div class="form-group">          
+        <label for="lastname" class="col-2 col-form-label">Last Name</label>
+        <input class="col-10" placeholder="Enter Last name" name="lastname" id="lastname" #lastname> 
+      </div>
+
+      <div class="form-group">          
+          <label for="email" class="col-2 col-form-label">Email</label>
+          <input class="col-10" placeholder="Enter Email" name="email" id="email" #email> 
+      </div>
+
+      <div class="form-group mx-auto">
+
+        <button class="btn btn-outline-primary m-2" 
+        (click)="searchName(firstname.value, lastname.value)">
+        Search Full Name
+        </button>
+
+        <button class="btn btn-outline-primary m-2" 
+        (click)="searchEmail(email.value)">
+        Search Email
+        </button>
+
+        <button class="btn btn-outline-info m-2" 
+        (click)="allCards()">
+        Show All Cards
+        </button>
+
+        <button class="btn btn-outline-success m-2" 
+        *ngIf="!cameraAccess" (click)="getCamera()">Access Camera 
+        </button>
+
+        <button class="btn btn-outline-success m-2" 
+        *ngIf="cameraAccess" (click)="getCamera()">Close Camera 
+        </button>
+
+      </div> 
+    </div>
+
+    <div *ngIf="cameraAccess">
+        <app-webcam 
+        [closeOpenCamera]="cameraAccess" 
+        (messageEvent)="receiveMessage($event)">
+        </app-webcam>
+    </div>
+
+    <!-- Display all cards -->
+    <div class="card p-1 m-4" *ngIf="cards">
+        <h4 class="mx-auto">All Business Cards</h4>
+        <div class="card p-2 m-2 bg-light text-dark" *ngFor="let card of cards">
+            <div>Name: {{ card['firstName'] }} {{ card['lastName'] }}</div>
+            <div>Phone: {{ card['phone'] }}</div>
+            <div>Email: {{ card['email'] }}</div>
+            <div>extraText: {{ card['extraText'] }}</div>
+            
+            <!-- if card image is available --> 
+            <div *ngIf="card['imageUri']"> 
+              <img class="img-fluid img-thumbnail" [src]="card['imageUri']" id="image" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Display Searched card only -->
+    <div class="card p-1 m-4" *ngIf="searchCardFound">
+        <h4 class="mx-auto">Searched Business Card Found</h4>
+        <div class="card p-2 m-2 bg-light text-dark">
+            <div>Name: {{ searchedCard['firstName'] }} {{ searchedCard['lastName'] }}</div>
+            <div>Phone: {{ searchedCard['phone'] }}</div>
+            <div>Email: {{ searchedCard['email'] }}</div>
+            <div>extraText: {{ searchedCard['extraText'] }}</div>
+
+            <!-- if card image is available --> 
+            <div *ngIf="searchedCard['imageUri']">
+              <img class="img-fluid img-thumbnail" [src]="searchedCard['imageUri']" id="image" />
+            </div>
+
+        </div> 
+    </div>
+
+    <!-- Display Searched card Not Found -->
+    <div class="card p-1 m-4" *ngIf="searchCardNotFound">
+        <h4 class="mx-auto">Searched Business Card Not Found</h4>
+        <div class="card p-2 m-2 bg-light text-dark">
+            <div>Please try another search.</div>
+        </div> 
+    </div>
+
+  </div>
+</form>
+
+
+
+
+

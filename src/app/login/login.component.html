@@ -1,0 +1,28 @@
+
+<form class="container m-4" (ngSubmit)="onLoginEmail()">
+  <div class="card p-2">
+    <h4 class="card card-title bg-warning text-center p-2 mx-auto">Business Cards Sign in</h4>
+
+    <div class="form-group col-auto">
+      <label for="email">Email</label>
+      <input type="text" placeholder="Enter Email" class="form-control" id="email" name="email" required [(ngModel)]="email">
+    </div>
+
+    <div class="form-group col-auto">
+      <label for="password">Password</label>
+      <input type="password" placeholder="Enter Password" class="form-control" id="password" name="password" required [(ngModel)]="password">
+    </div>
+
+    <div class="form-group mx-auto">
+      <button type="submit" class="btn btn-success">Log In</button>
+    </div>
+
+    <div class="alert alert-danger alert-dismissible" *ngIf="!loginSuccessful">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>User Name or Password is Wrong. Please try again. </strong> 
+    </div>
+  </div>
+</form> 
+
+
+

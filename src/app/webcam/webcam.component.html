@@ -1,0 +1,41 @@
+<div class="m-2 text-center" *ngIf="showWebcam">
+    <div class="card p-2 mb-4">
+      <h4>Camera</h4>
+
+      <webcam class="img-thumbnail" [trigger]="triggerObservable" 
+              [height]="400" [width]="400"
+              (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+              [switchCamera]="nextWebcamObservable"
+              [videoOptions]="videoOptions"
+              (initError)="handleInitError($event)"
+      ></webcam>
+      <br/>
+      <button class="btn btn-outline-success" *ngIf="showWebcam" (click)="triggerSnapshot();">Take A Snapshot</button>
+
+      <div *ngIf="webcamImage">
+        <br>
+        <h4> Extract Text if snapshot is OK.</h4>
+        <button class="btn btn-outline-success" (click)="extractText();">Exract Text</button>
+        <div>
+        <img class="img-fluid img-thumbnail" height="400" width="400" 
+        [src]="webcamImage.imageAsDataUrl"/>
+        </div>
+      </div>
+
+    </div>
+
+</div>
+  
+<div *ngIf="getCardText">
+  <app-cardtext [imageUri]="imageUri" [imageOnly]="imageOnly" 
+  (closeCardtextEvent)="receiveMessage($event)">
+</app-cardtext>
+</div>
+
+<h4 *ngIf="errors.length > 0">Messages:</h4>
+<ul *ngFor="let error of errors">
+  <li>{{error | json}}</li>
+</ul>
+  
+
+  

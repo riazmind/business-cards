@@ -1,0 +1,26 @@
+<!-- All users and session history from firebase --> 
+<div *ngIf="history && history.length > 0; then displaySearch; else noSearch"></div>
+
+<ng-template #displaySearch>
+  <div class="m-2">
+    <div class="card m-1">
+      <div class="card-body">
+        <h4 class="card card-title bg-warning text-center">User Actions History</h4>
+        <p class="card-text alert alert-success text-dark" *ngFor="let search of history">
+            Date: {{ search.date | date:'medium'}} 
+            <br>
+            User: {{ search.user }}
+            <br>
+            Action: {{ search.action }}
+            <br>
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #noSearch>
+    <div class="card p-1 m-4">
+            <h4 class="mx-auto">No Search History</h4>
+    </div>
+</ng-template>
