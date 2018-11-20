@@ -5,10 +5,10 @@ Scan and store business cards in firebase.
 ## Usage  
 
 - Take snapshot by using your device camera. 
-- The Google Vision API change translate image to text. 
-- The text parses to names, email, phone and other text and store in firebase database along with image of business card in base64 format. 
-- Google Analytics store usage of app and log all events like when user login or use scan a business card by using google vision api. 
-- History in firebase store the all event of user like searched names and scanned business cards etc. 
+- The Google Vision API used to extract text from image. 
+- The text parses names, email, phone and other text and store in firebase database along with image of business card in base64 format. 
+- Google Analytics tracks usage of app and log all events like when user login or scan a business card.
+- History in firebase store all event of user like searched names and scanned business cards etc. 
 - Two types of users: Admins and Non-Admins. Admins has full rights to do every thing while non admins cannot see the history. 
 
 
